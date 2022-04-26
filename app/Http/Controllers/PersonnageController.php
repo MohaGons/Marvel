@@ -12,4 +12,10 @@ class PersonnageController extends Controller
         $personnages = Personnage::paginate(15);
         return view('personnage', ['personnages' => $personnages]);
     }
+
+    public function detailPersonnage(Request $request) 
+    {
+        $personnages = Personnage::find($request->id);    
+        return view('detailpersonnage', ['personnages' => $personnages]);
+    }
 }

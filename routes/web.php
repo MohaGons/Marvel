@@ -26,4 +26,6 @@ Route::get('/personnage',
     [PersonnageController::class, 'personnage']
 )->middleware(['auth'])->name('personnage');
 
+Route::get('/detailPersonnage/{id}',[PersonnageController::class, 'detailPersonnage'])->middleware(['auth'])->name('detailpersonnage');
+
 require __DIR__.'/auth.php';
