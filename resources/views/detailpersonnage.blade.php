@@ -13,6 +13,10 @@
                     <br>
                     <table>
                         <tr>
+                            <th><strong></strong></th>
+                            <td> <img src="{{ asset('storage/image/'.$personnages->photo) }}" style="height: 100px; width: 150px;"> </td>
+                        </tr>
+                        <tr>
                             <th><strong> Surnom: </strong></th>
                             <td> {{ $personnages->charactername }} </td>
                         </tr>
