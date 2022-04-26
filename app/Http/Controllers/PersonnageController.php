@@ -9,7 +9,7 @@ class PersonnageController extends Controller
 {
     public function personnage()
     {
-        $personnages = Personnage::paginate(15);
+        $personnages = Personnage::paginate(2);
         return view('personnage', ['personnages' => $personnages]);
     }
 
