@@ -12,10 +12,6 @@
                     <h1>Détails sur {{ $personnages->firstname }} {{ $personnages->lastname }}</h1>
                     <br>
                     <table>
-                    <tr>  
-                            <th><strong></strong></th>
-                            <td><img src="{{ $personnages->photo }}"> </td>
-                        </tr>
                         <tr>
                             <th><strong> Surnom: </strong></th>
                             <td> {{ $personnages->charactername }} </td>
