@@ -22,8 +22,8 @@ return new class extends Migration
             $table->integer('duration');
             $table->string('countrypdroduction');
             $table->integer('budget');
-            $table->foreignId('personnages_lastname');
-            $table->foreignId('personnages_firstname');
+            $table->foreignId('personnages_id');
+
             $table->timestamps();
         });
     }

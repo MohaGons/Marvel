@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer('age');
             $table->string('power');
             $table->date('dateofbirth');
-            $table->foreignId('movie_id');
+            $table->foreignId('films_id');
             $table->timestamps();
         });
     }
