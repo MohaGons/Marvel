@@ -26,6 +26,12 @@ Route::get('/personnage',
     [PersonnageController::class, 'personnage']
 )->middleware(['auth'])->name('personnage');
 
-Route::get('/detailPersonnage/{id}',[PersonnageController::class, 'detailPersonnage'])->middleware(['auth'])->name('detailpersonnage');
+Route::get('/detailPersonnage/{id}',
+    [PersonnageController::class, 'detailPersonnage']
+)->middleware(['auth'])->name('detailpersonnage');
+
+Route::get('/film',
+    [PersonnageController::class, 'film']
+)->middleware(['auth'])->name('film');
 
 require __DIR__.'/auth.php';
