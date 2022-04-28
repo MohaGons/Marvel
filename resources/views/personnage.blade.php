@@ -10,9 +10,9 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     @foreach($personnages as $personnage)
-                        <li>[<a href="{{ route('detailpersonnage', $personnage->id) }}">{{ $personnage->firstname }} {{ $personnage->lastname }}</a>]</li>
+                    <li>[<a href="{{ route('detailpersonnage', $personnage->id) }}">{{ $personnage->firstname }} {{ $personnage->lastname }}</a>] <a href="{{ route('deletepersonnage' , $personnage->id) }}">[delete]</a></li>
                     @endforeach
-                     {{ $personnages->links() }}
+                    {{ $personnages->links() }}
                 </div>
             </div>
         </div>

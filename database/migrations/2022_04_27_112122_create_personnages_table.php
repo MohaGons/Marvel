@@ -15,14 +15,15 @@ return new class extends Migration
     {
         Schema::create('personnages', function (Blueprint $table) {
             $table->id();
-            $table->string('firstname');
-            $table->string('lastname');
-            $table->string('charactername');
-            $table->string('photo');
-            $table->integer('age');
-            $table->string('power');
-            $table->date('dateofbirth');
-            $table->foreignId('films_id');
+            $table->integer('user_id');
+            $table->string('firstname')->nullable();
+            $table->string('lastname')->nullable();
+            $table->string('charactername')->nullable();
+            $table->string('photo')->nullable();
+            $table->integer('age')->nullable();
+            $table->string('power')->nullable();
+            $table->date('dateofbirth')->nullable();
+            $table->foreignId('films_id')->nullable();
             $table->timestamps();
         });
     }
