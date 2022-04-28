@@ -51,4 +51,9 @@ Route::get(
     [PersonnageController::class, 'film']
 )->middleware(['auth'])->name('film');
 
+Route::post('/postCommentairePersonnage/{id_personnage}',
+    [PersonnageController::class, 'postCommentairePersonnage']
+)->middleware(['auth'])->name('postcommentairepersonnage');
+require __DIR__.'/auth.php';
+
 require __DIR__ . '/auth.php';

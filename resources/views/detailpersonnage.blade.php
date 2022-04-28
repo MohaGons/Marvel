@@ -22,23 +22,36 @@
                             <th><strong> Surnom: </strong></th>
                             <td> {{ $personnages->charactername }} </td>
                         </tr>
-                        <tr>  
+                        <tr>
                             <th><strong> Age: </strong></th>
                             <td> {{ $personnages->age }} </td>
                         </tr>
-                        <tr>  
+                        <tr>
                             <th><strong> Pouvoir: </strong></th>
                             <td> {{ $personnages->power }} </td>
                         </tr>
-                        <tr>  
+                        <tr>
                             <th><strong> Date de naissance: </strong></th>
                             <td> {{ $personnages->dateofbirth }} </td>
                         </tr>
-                        <tr>  
+                        <tr>
                             <th><strong> Participation au film: </strong></th>
                             <td> {{ $personnages->movie_id }} </td>
                         </tr>
                     </table>
+                    <br><br>
+                    Commentaires :
+                    <ul>
+                        @foreach($commentairesPersonnage as $commentaire)
+                            <li>{{ $commentaire->content }}</li>
+                        @endforeach
+                    </ul>
+                    <br><br>
+                    <form method="post" action="{{ route('postcommentairepersonnage', $personnages->id) }}">
+                        <input type="text" name="commentaire">
+                        <input type="submit" value="Poster un commentaire">
+                        @csrf
+                    </form>
                 </div>
             </div>
         </div>
