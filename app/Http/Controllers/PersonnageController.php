@@ -93,6 +93,18 @@ class PersonnageController extends Controller
 
     public function postCommentairePersonnage(Request $request)
     {
+
+        $request->validate(
+            [
+                'commentaire' => 'required|min:10',
+
+            ],
+
+            [
+                'commentaire.required' => 'Ce champ est requis',
+                'commentaire.min' => 'Ce commentaire dois faire 10 caractères minimum'
+            ]
+        );
         $commentairePersonnage = new CommentairesPersonnage();
         $commentairePersonnage->user_id = Auth::id();
         $commentairePersonnage->personnage_id = $request->id_personnage;
@@ -102,7 +114,7 @@ class PersonnageController extends Controller
         return redirect(route('detailpersonnage', $request->id_personnage));
     }
 
-    public function deleteCommentaire(Request $request) 
+    public function deleteCommentaire(Request $request)
     {
         $commentairePersonnage = CommentairesPersonnage::find($request->id);
         if ($commentairePersonnage->user_id != Auth::id())
@@ -113,16 +125,16 @@ class PersonnageController extends Controller
         return redirect(route('detailpersonnage', $commentairePersonnage->personnage_id));
     }
 
-    public function formUpdateCommentaire(Request $request) 
+    public function formUpdateCommentaire(Request $request)
     {
         $commentairePersonnage = CommentairesPersonnage::find($request->id);
         if ($commentairePersonnage->user_id != Auth::id())
             abort(404);
-            
+
         return view('formUpdateCommentaire', ['commentairePersonnage' => $commentairePersonnage]);
     }
 
-    public function updateCommentaire(Request $request) 
+    public function updateCommentaire(Request $request)
     {
         $commentairePersonnage = CommentairesPersonnage::find($request->id);
         if ($commentairePersonnage->user_id != Auth::id())
@@ -130,7 +142,7 @@ class PersonnageController extends Controller
 
         $commentairePersonnage->content = $request->commentaire;
         $commentairePersonnage->save();
-            
+
         return redirect(route('detailpersonnage', $commentairePersonnage->personnage_id));
     }
 }

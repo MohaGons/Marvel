@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                    {{ __('Liste des personnages') }}
+            {{ __('Liste des personnages') }}
         </h2>
     </x-slot>
 
@@ -43,17 +43,17 @@
                     Commentaires :
                     <ul>
                         @foreach($commentairesPersonnage as $commentaire)
-                            <li>{{ $commentaire->created_at }} : {{ $commentaire->content }}</li>
-                            @if($commentaire->user_id == Auth::id())
-                                [<a href="{{ route('formupdatecommentaire', $commentaire->id) }}">update</a>]
-                                [<a href="{{ route('deletecommentaire', $commentaire->id) }}">delete</a>]
-                            @endif
+                        <li>{{ $commentaire->created_at }} : {{ $commentaire->content }} {{ $commentaire->user_id }}</li>
+                        @if($commentaire->user_id == Auth::id())
+                        [<a href="{{ route('formupdatecommentaire', $commentaire->id) }}">update</a>]
+                        [<a href="{{ route('deletecommentaire', $commentaire->id) }}">delete</a>]
+                        @endif
                         @endforeach
                     </ul>
                     <br><br>
                     <form method="post" action="{{ route('postcommentairepersonnage', $personnages->id) }}">
                         <input type="text" name="commentaire">
-                        <input type="submit" value="Poster un commentaire">
+                        <input type="submit" value="Poster un commentaire"><span style="color:red">@error('commentaire'){{$message}}@enderror</span>
                         @csrf
                     </form>
                 </div>
