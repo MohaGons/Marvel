@@ -26,7 +26,7 @@ class PersonnageController extends Controller
                 'firstname' => 'required',
                 'lastname' => 'required',
                 'charactername' => 'required',
-                'photo' => 'required',
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
                 'age' => 'required',
                 'power' => 'required',
                 'dateofbirth' => 'required',
@@ -38,7 +38,7 @@ class PersonnageController extends Controller
                 'firstname.required' => 'Veuillez entrer un prénom',
                 'lastname.required' => 'Veuillez entrer un nom',
                 'charactername.required' => 'Veuillez entrer le nom de son personnage',
-                'photo.required' => 'Veuillez inserer une image',
+                'image.required' => 'Veuillez inserer une image',
                 'age.required' => 'Veuillez entrerson age',
                 'power.required' => 'Veuillez entrer ses pouvoirs',
                 'dateofbirth.required' => 'Veuillez entrer sa date de naissance',
@@ -52,7 +52,10 @@ class PersonnageController extends Controller
         $personnages->firstname = $request->firstname;
         $personnages->lastname = $request->lastname;
         $personnages->charactername = $request->charactername;
-        $personnages->photo = $request->photo;
+        $name = $request->file('image')->getClientOriginalName();
+        $path = $request->file('image')->store('public/image');
+        $path = substr($path, 13);
+        $personnages->photo = $path;
         $personnages->age = $request->age;
         $personnages->power = $request->power;
         $personnages->dateofbirth = $request->dateofbirth;
@@ -77,8 +80,13 @@ class PersonnageController extends Controller
             ->where('commentaires_personnages.personnage_id', $request->id)
             ->get();
 
+        $okok = DB::table('personnages')
+        ->join('films', 'personnages.films_id', '=', 'films.id')
+        ->select('personnages.*', 'films.name')
+        ->where('personnages.id', $request->id)
+        ->get();
 
-        return view('detailpersonnage', ['personnages' => $personnages, 'commentairesPersonnage' => $commentairesPersonnage]);
+        return view('detailpersonnage', ['personnages' => $personnages, 'commentairesPersonnage' => $commentairesPersonnage, 'okok' => $okok]);
     }
 
 

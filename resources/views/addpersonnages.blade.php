@@ -12,11 +12,11 @@
                     Formulaire d'ajout d'un personnage
                     <br><br>
 
-                    <form method="post" action="{{ route('personnageadded') }}"><br>
+                    <form method="post" action="{{ route('personnageadded') }}" enctype="multipart/form-data"><br>
                         Prénom: <input type="text" name="firstname"><span style="color:red">@error('firstname'){{$message}}@enderror</span><br>
                         Nom de famille: <input type="text" name="lastname"><span style="color:red">@error('lastname'){{$message}}@enderror</span><br>
                         Nom du personnage: <input type="text" name="charactername"><span style="color:red">@error('charactername'){{$message}}@enderror</span><br>
-                        Image: <input type="file" name="photo"><span style="color:red">@error('photo'){{$message}}@enderror</span><br>
+                        Image: <input type="file" name="image"><span style="color:red">@error('photo'){{$message}}@enderror</span><br>
                         Age: <input type="number" name="age"><span style="color:red">@error('age'){{$message}}@enderror</span><br>
                         Pouvoir: <input type="text" name="power"><span style="color:red">@error('power'){{$message}}@enderror</span><br>
                         Date de naissance: <input type="date" name="dateofbirth"><span style="color:red">@error('date'){{$message}}@enderror</span><br>
