@@ -20,9 +20,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/addpersonnage', function () {
-    return view('addpersonnages');
-})->middleware(['auth'])->name('addpersonnages');
+Route::get('/addpersonnage', [PersonnageController::class, 'addPersonnage'])->middleware(['auth'])->name('addpersonnages');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -45,7 +43,7 @@ Route::get(
 
 Route::post(
     '/personnageAdded',
-    [PersonnageController::class, 'addPersonnage']
+    [PersonnageController::class, 'formPersonnage']
 )->middleware(['auth'])->name('personnageadded');
 
 Route::get(

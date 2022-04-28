@@ -14,6 +14,12 @@ class PersonnageController extends Controller
 
     public function addPersonnage(Request $request)
     {
+        $films = Film::all();
+        return view('addpersonnages', ['films' => $films]);
+    }
+
+    public function formPersonnage(Request $request)
+    {
         $request->validate(
             [
                 'firstname' => 'required',
@@ -54,6 +60,7 @@ class PersonnageController extends Controller
 
         return redirect(route('personnage'));
     }
+
     public function personnage()
     {
         $personnages = Personnage::paginate(5);

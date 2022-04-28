@@ -20,7 +20,12 @@
                         Age: <input type="number" name="age"><span style="color:red">@error('age'){{$message}}@enderror</span><br>
                         Pouvoir: <input type="text" name="power"><span style="color:red">@error('power'){{$message}}@enderror</span><br>
                         Date de naissance: <input type="date" name="dateofbirth"><span style="color:red">@error('date'){{$message}}@enderror</span><br>
-                        Film dans lequel il a joué: <input type="text" name="filmsid"><br>
+                        Film dans lequel il a joué: 
+                        <select class="js-example-basic-single" name="filmsid">
+                            @foreach($films as $film)
+                                <option value="{{ $film->id }}">{{ $film->name }}</option>
+                            @endforeach
+                        </select><br>
                         <input type="submit" value="Ajouter un personnage">
                         @csrf
                     </form>
