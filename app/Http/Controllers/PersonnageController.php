@@ -7,6 +7,7 @@ use App\Models\Personnage;
 use App\Models\Film;
 use App\Models\CommentairesPersonnage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PersonnageController extends Controller
 {
@@ -70,7 +71,13 @@ class PersonnageController extends Controller
     public function detailPersonnage(Request $request)
     {
         $personnages = Personnage::find($request->id);
-        $commentairesPersonnage = CommentairesPersonnage::all()->where('personnage_id', $request->id);
+        $commentairesPersonnage = DB::table('commentaires_personnages')
+            ->join('users', 'commentaires_personnages.user_id', '=', 'users.id')
+            ->select('commentaires_personnages.*', 'users.name')
+            ->where('commentaires_personnages.personnage_id', $request->id)
+            ->get();
+
+
         return view('detailpersonnage', ['personnages' => $personnages, 'commentairesPersonnage' => $commentairesPersonnage]);
     }
 
