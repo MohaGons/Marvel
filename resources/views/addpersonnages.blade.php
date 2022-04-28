@@ -12,14 +12,14 @@
                     Formulaire d'ajout d'un personnage
                     <br><br>
                     <form method="post" action="{{ route('personnageadded') }}"><br>
-                        <input type="text" name="firstname" require="true"><br>
-                        <input type="text" name="lastname" require="true"><br>
-                        <input type="text" name="charactername" require="true"><br>
-                        <input type="file" name="photo" require="true"><br>
-                        <input type="number" name="age"><br>
-                        <input type="date" name="dateofbirth"><br>
-                        <input type="text" name="filmsid"><br>
-
+                        Prénom: <input type="text" name="firstname" require="true"><br>
+                        Nom de famille: <input type="text" name="lastname" require="true"><br>
+                        Nom du personnage: <input type="text" name="charactername" require="true"><br>
+                        Image: <input type="file" name="photo" require="true"><br>
+                        Age: <input type="number" name="age"><br>
+                        Pouvoir: <input type="text" name="power"><br>
+                        Date de naissance: <input type="date" name="dateofbirth"><br>
+                        Film dans lequel il a joué: <input type="text" name="filmsid"><br>
                         <input type="submit" value="Ajouter un personnage">
                         @csrf
                     </form>
