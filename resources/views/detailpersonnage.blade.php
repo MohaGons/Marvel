@@ -43,7 +43,11 @@
                     Commentaires :
                     <ul>
                         @foreach($commentairesPersonnage as $commentaire)
-                            <li>{{ $commentaire->content }}</li>
+                            <li>{{ $commentaire->created_at }} : {{ $commentaire->content }}</li>
+                            @if($commentaire->user_id == Auth::id())
+                                [<a href="{{ route('formupdatecommentaire', $commentaire->id) }}">update</a>]
+                                [<a href="{{ route('deletecommentaire', $commentaire->id) }}">delete</a>]
+                            @endif
                         @endforeach
                     </ul>
                     <br><br>

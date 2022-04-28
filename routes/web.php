@@ -58,6 +58,18 @@ Route::post('/postCommentairePersonnage/{id_personnage}',
 Route::get('login/github', [AuthenticatedSessionController::class, 'redirectToProvider']);
 Route::get('login/github/callback', [AuthenticatedSessionController::class, 'handleProviderCallback']);
 
+Route::get('/deleteCommentaire/{id}',
+[PersonnageController::class, 'deleteCommentaire']
+)->middleware(['auth'])->name('deletecommentaire');
+
+Route::get('/formUpdateCommentaire/{id}',
+[PersonnageController::class, 'formUpdateCommentaire']
+)->middleware(['auth'])->name('formupdatecommentaire');
+
+Route::post('/updateCommentaire',
+[PersonnageController::class, 'updateCommentaire']
+)->middleware(['auth'])->name('updatecommentaire');
+
 require __DIR__.'/auth.php';
 
 require __DIR__ . '/auth.php';

@@ -101,4 +101,36 @@ class PersonnageController extends Controller
 
         return redirect(route('detailpersonnage', $request->id_personnage));
     }
+
+    public function deleteCommentaire(Request $request) 
+    {
+        $commentairePersonnage = CommentairesPersonnage::find($request->id);
+        if ($commentairePersonnage->user_id != Auth::id())
+            abort(404);
+
+        $commentairePersonnage->delete();
+
+        return redirect(route('detailpersonnage', $commentairePersonnage->personnage_id));
+    }
+
+    public function formUpdateCommentaire(Request $request) 
+    {
+        $commentairePersonnage = CommentairesPersonnage::find($request->id);
+        if ($commentairePersonnage->user_id != Auth::id())
+            abort(404);
+            
+        return view('formUpdateCommentaire', ['commentairePersonnage' => $commentairePersonnage]);
+    }
+
+    public function updateCommentaire(Request $request) 
+    {
+        $commentairePersonnage = CommentairesPersonnage::find($request->id);
+        if ($commentairePersonnage->user_id != Auth::id())
+            abort(404);
+
+        $commentairePersonnage->content = $request->commentaire;
+        $commentairePersonnage->save();
+            
+        return redirect(route('detailpersonnage', $commentairePersonnage->personnage_id));
+    }
 }
