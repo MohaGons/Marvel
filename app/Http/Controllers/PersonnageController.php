@@ -14,6 +14,32 @@ class PersonnageController extends Controller
 
     public function addPersonnage(Request $request)
     {
+        $request->validate(
+            [
+                'firstname' => 'required',
+                'lastname' => 'required',
+                'charactername' => 'required',
+                'photo' => 'required',
+                'age' => 'required',
+                'power' => 'required',
+                'dateofbirth' => 'required',
+
+            ],
+
+            [
+
+                'firstname.required' => 'Veuillez entrer un prénom',
+                'lastname.required' => 'Veuillez entrer un nom',
+                'charactername.required' => 'Veuillez entrer le nom de son personnage',
+                'photo.required' => 'Veuillez inserer une image',
+                'age.required' => 'Veuillez entrerson age',
+                'power.required' => 'Veuillez entrer ses pouvoirs',
+                'dateofbirth.required' => 'Veuillez entrer sa date de naissance',
+            ]
+        );
+
+
+
         $personnages = new Personnage();
         $personnages->user_id = Auth::id();
         $personnages->firstname = $request->firstname;

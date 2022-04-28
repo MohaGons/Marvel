@@ -11,14 +11,15 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     Formulaire d'ajout d'un personnage
                     <br><br>
+
                     <form method="post" action="{{ route('personnageadded') }}"><br>
-                        Prénom: <input type="text" name="firstname" require="true"><br>
-                        Nom de famille: <input type="text" name="lastname" require="true"><br>
-                        Nom du personnage: <input type="text" name="charactername" require="true"><br>
-                        Image: <input type="file" name="photo" require="true"><br>
-                        Age: <input type="number" name="age"><br>
-                        Pouvoir: <input type="text" name="power"><br>
-                        Date de naissance: <input type="date" name="dateofbirth"><br>
+                        Prénom: <input type="text" name="firstname"><span style="color:red">@error('firstname'){{$message}}@enderror</span><br>
+                        Nom de famille: <input type="text" name="lastname"><span style="color:red">@error('lastname'){{$message}}@enderror</span><br>
+                        Nom du personnage: <input type="text" name="charactername"><span style="color:red">@error('charactername'){{$message}}@enderror</span><br>
+                        Image: <input type="file" name="photo"><span style="color:red">@error('photo'){{$message}}@enderror</span><br>
+                        Age: <input type="number" name="age"><span style="color:red">@error('age'){{$message}}@enderror</span><br>
+                        Pouvoir: <input type="text" name="power"><span style="color:red">@error('power'){{$message}}@enderror</span><br>
+                        Date de naissance: <input type="date" name="dateofbirth"><span style="color:red">@error('date'){{$message}}@enderror</span><br>
                         Film dans lequel il a joué: <input type="text" name="filmsid"><br>
                         <input type="submit" value="Ajouter un personnage">
                         @csrf
