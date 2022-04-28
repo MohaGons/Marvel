@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('director');
             $table->string('productioncompanies');
             $table->integer('duration');
-            $table->string('countrypdroduction');
+            $table->string('countryproduction');
             $table->integer('budget');
             $table->foreignId('personnages_id');
 

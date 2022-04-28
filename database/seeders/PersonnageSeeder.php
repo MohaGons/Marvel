@@ -15,7 +15,8 @@ class PersonnageSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('personnages')->insert([
+        DB::table('personnages')->insert([[ 
+            'user_id' => '1',
             'firstname' => 'Elizabeth',
             'lastname' => 'Olsen',
             'charactername' => 'Wanda Maximoff alias la Sorcière Rouge',
@@ -24,7 +25,9 @@ class PersonnageSeeder extends Seeder
             'power' => 'Combattante experte, Pouvoirs psioniques',
             'dateofbirth' => '1988-12-12',
             'films_id' => '1',
-
+        ],
+        [ 
+            'user_id' => '1',
             'firstname' => 'Chris',
             'lastname' => 'Evans',
             'charactername' => 'Steeve Rogers alias Captain America',
@@ -33,7 +36,9 @@ class PersonnageSeeder extends Seeder
             'power' => 'Superforce',
             'dateofbirth' => '1917-04-07',
             'films_id' => '1',
-
+        ],
+        [ 
+            'user_id' => '1',
             'firstname' => 'Tom',
             'lastname' => 'Holland',
             'charactername' => 'Peter Parker alias Spider Man',
@@ -42,7 +47,9 @@ class PersonnageSeeder extends Seeder
             'power' => 'Sens de l araignée',
             'dateofbirth' => '1997-08-20',
             'films_id' => '1',
-
+        ],
+        [ 
+            'user_id' => '1',
             'firstname' => 'Benedict',
             'lastname' => 'Cumberbatch',
             'charactername' => 'Doctor Steven Strange Alias Doctor Strange',
@@ -51,6 +58,6 @@ class PersonnageSeeder extends Seeder
             'power' => 'Magicien, controle le temps',
             'dateofbirth' => '1980-08-20',
             'films_id' => '1',
-        ]);
+        ]]);
     }
 }
