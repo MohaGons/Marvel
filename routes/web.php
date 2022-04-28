@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PersonnageController;
+use Laravel\Socialite\Facades\Socialite;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +56,10 @@ Route::get(
 Route::post('/postCommentairePersonnage/{id_personnage}',
     [PersonnageController::class, 'postCommentairePersonnage']
 )->middleware(['auth'])->name('postcommentairepersonnage');
+
+Route::get('login/github', [AuthenticatedSessionController::class, 'redirectToProvider']);
+Route::get('login/github/callback', [AuthenticatedSessionController::class, 'handleProviderCallback']);
+
 require __DIR__.'/auth.php';
 
 require __DIR__ . '/auth.php';
