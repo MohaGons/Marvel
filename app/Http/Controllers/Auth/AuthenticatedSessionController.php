@@ -8,7 +8,6 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
-//use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Models\User;
 
 class AuthenticatedSessionController extends Controller
