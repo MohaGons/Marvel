@@ -15,14 +15,14 @@ class PersonnageController extends Controller
     {
         $personnages = new Personnage();
         $personnages->user_id = Auth::id();
-        $personnages->firstname = $request->personnages;
-        $personnages->lastname = $request->personnages;
-        $personnages->charactername = $request->personnages;
-        $personnages->photo = $request->personnages;
-        $personnages->age = $request->personnages;
-        $personnages->power = $request->personnages;
-        $personnages->dateofbirth = $request->personnages;
-        $personnages->films_id = $request->personnages;
+        $personnages->firstname = $request->firstname;
+        $personnages->lastname = $request->lastname;
+        $personnages->charactername = $request->charactername;
+        $personnages->photo = $request->photo;
+        $personnages->age = $request->age;
+        $personnages->power = $request->power;
+        $personnages->dateofbirth = $request->dateofbirth;
+        $personnages->films_id = $request->filmsid;
         $personnages->save();
 
         return redirect(route('personnage'));
