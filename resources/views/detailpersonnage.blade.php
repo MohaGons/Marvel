@@ -36,7 +36,7 @@
                         </tr>
                         <tr>
                             <th><strong> Participation au film: </strong></th>
-                            <td> {{ $personnages->movie_id }} </td>
+                            <td> {{ $personnages->films_id }} </td>
                         </tr>
                     </table>
                     <br><br>
