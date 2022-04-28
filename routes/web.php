@@ -20,7 +20,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/addpersonnage', [PersonnageController::class, 'addPersonnage'])->middleware(['auth'])->name('addpersonnages');
+Route::get('/addpersonnage', 
+    [PersonnageController::class, 'addPersonnage']
+)->middleware(['auth'])->name('addpersonnages');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -55,9 +57,6 @@ Route::post('/postCommentairePersonnage/{id_personnage}',
     [PersonnageController::class, 'postCommentairePersonnage']
 )->middleware(['auth'])->name('postcommentairepersonnage');
 
-Route::get('login/github', [AuthenticatedSessionController::class, 'redirectToProvider']);
-Route::get('login/github/callback', [AuthenticatedSessionController::class, 'handleProviderCallback']);
-
 Route::get('/deleteCommentaire/{id}',
 [PersonnageController::class, 'deleteCommentaire']
 )->middleware(['auth'])->name('deletecommentaire');
@@ -70,6 +69,7 @@ Route::post('/updateCommentaire',
 [PersonnageController::class, 'updateCommentaire']
 )->middleware(['auth'])->name('updatecommentaire');
 
-require __DIR__.'/auth.php';
+Route::get('login/github', [AuthenticatedSessionController::class, 'redirectToProvider']);
+Route::get('login/github/callback', [AuthenticatedSessionController::class, 'handleProviderCallback']);
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
