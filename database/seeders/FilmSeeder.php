@@ -23,7 +23,6 @@ class FilmSeeder extends Seeder
             'duration' => '158',
             'countryproduction' => 'Etats-Unis',
             'budget' => '200',
-            'personnages_id' => '1',
         ],
         [ 
             'name' => 'Avengers: Infinity War',
@@ -33,7 +32,6 @@ class FilmSeeder extends Seeder
             'duration' => '149',
             'countryproduction' => 'Etats-Unis',
             'budget' => '250',
-            'personnages_id' => '1',
         ],
         [ 
             'name' => 'Captain America: Civil War',
@@ -43,7 +41,6 @@ class FilmSeeder extends Seeder
             'duration' => '150',
             'countryproduction' => 'Etats-Unis',
             'budget' => '190',
-            'personnages_id' => '1',
         ],
         [ 
             'name' => 'Spider-Man : No Way Home',
@@ -53,7 +50,6 @@ class FilmSeeder extends Seeder
             'duration' => '148',
             'countryproduction' => 'Etats-Unis',
             'budget' => '250',
-            'personnages_id' => '1',
         ]]);
     }
 }

@@ -24,7 +24,6 @@ class PersonnageSeeder extends Seeder
             'age' => '32',
             'power' => 'Combattante experte, Pouvoirs psioniques',
             'dateofbirth' => '1988-12-12',
-            'films_id' => '1',
         ],
         [ 
             'user_id' => '1',
@@ -35,7 +34,6 @@ class PersonnageSeeder extends Seeder
             'age' => '32',
             'power' => 'Superforce',
             'dateofbirth' => '1917-04-07',
-            'films_id' => '1',
         ],
         [ 
             'user_id' => '1',
@@ -46,7 +44,6 @@ class PersonnageSeeder extends Seeder
             'age' => '20',
             'power' => 'Sens de l araignée',
             'dateofbirth' => '1997-08-20',
-            'films_id' => '1',
         ],
         [ 
             'user_id' => '1',
@@ -57,7 +54,6 @@ class PersonnageSeeder extends Seeder
             'age' => '20',
             'power' => 'Magicien, controle le temps',
             'dateofbirth' => '1980-08-20',
-            'films_id' => '1',
         ]]);
     }
 }
