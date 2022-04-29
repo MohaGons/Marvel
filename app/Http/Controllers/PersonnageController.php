@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Personnage;
 use App\Models\Film;
 use App\Models\CommentairesPersonnage;
+use App\Models\PersonnageFilm;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -45,8 +46,6 @@ class PersonnageController extends Controller
             ]
         );
 
-
-
         $personnages = new Personnage();
         $personnages->user_id = Auth::id();
         $personnages->firstname = $request->firstname;
@@ -59,8 +58,16 @@ class PersonnageController extends Controller
         $personnages->age = $request->age;
         $personnages->power = $request->power;
         $personnages->dateofbirth = $request->dateofbirth;
-        $personnages->films_id = $request->filmsid;
         $personnages->save();
+
+        $lastInsertPersonnage = $personnages->id;
+        $allFilm = [];
+        foreach ($request->filmsid as $film) {
+            $personnageFilm = new PersonnageFilm();
+            $personnageFilm->personnage_id = $lastInsertPersonnage;
+            $personnageFilm->films_id = $film;
+            $personnageFilm->save();
+        }
 
         return redirect(route('personnage'));
     }
@@ -74,8 +81,15 @@ class PersonnageController extends Controller
     public function detailPersonnage(Request $request)
     {
         $personnages = Personnage::find($request->id);
-    
-        return view('detailpersonnage', ['personnages' => $personnages]);
+        $personnage_films = PersonnageFilm::all()->where('personnage_id', $request->id);
+
+        $films = [];
+        foreach ($personnage_films as $personnage_film) {
+            $films[] = Film::find($personnage_film)[0]->name;
+            
+        }
+       
+        return view('detailpersonnage', ['personnages' => $personnages, 'films' => $films]);
     }
 
 

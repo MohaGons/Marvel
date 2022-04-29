@@ -36,7 +36,11 @@
                         </tr>
                         <tr>
                             <th><strong> Participation au film: </strong></th>
-                            <td> {{ $personnages->name }} </td>
+                            <td>
+                            @foreach($films as $film)
+                            <li> {{ $film }}</li>
+                            @endforeach
+                            </td>
                         </tr>
                     </table>
                     <br><br>

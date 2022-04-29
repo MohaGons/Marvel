@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('personnage_id');
             $table->foreign('films_id')->references('id')->on('films');
             $table->foreign('personnage_id')->references('id')->on('personnages');
+            $table->timestamps();
         });
     }
 
