@@ -21,7 +21,7 @@
                         Pouvoir: <input type="text" name="power"><span style="color:red">@error('power'){{$message}}@enderror</span><br>
                         Date de naissance: <input type="date" name="dateofbirth"><span style="color:red">@error('date'){{$message}}@enderror</span><br>
                         Film dans lequel il a joué: 
-                        <select class="js-example-basic-single" name="filmsid">
+                        <select class="js-example-basic-single" name="filmsid[]" multiple="">
                             @foreach($films as $film)
                                 <option value="{{ $film->id }}">{{ $film->name }}</option>
                             @endforeach

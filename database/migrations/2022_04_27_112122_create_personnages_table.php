@@ -23,7 +23,6 @@ return new class extends Migration
             $table->integer('age')->nullable();
             $table->string('power')->nullable();
             $table->date('dateofbirth')->nullable();
-            $table->foreignId('films_id')->nullable();
             $table->timestamps();
         });
     }
