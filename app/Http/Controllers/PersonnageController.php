@@ -74,19 +74,8 @@ class PersonnageController extends Controller
     public function detailPersonnage(Request $request)
     {
         $personnages = Personnage::find($request->id);
-        $commentairesPersonnage = DB::table('commentaires_personnages')
-            ->join('users', 'commentaires_personnages.user_id', '=', 'users.id')
-            ->select('commentaires_personnages.*', 'users.name')
-            ->where('commentaires_personnages.personnage_id', $request->id)
-            ->get();
-
-        $okok = DB::table('personnages')
-        ->join('films', 'personnages.films_id', '=', 'films.id')
-        ->select('personnages.*', 'films.name')
-        ->where('personnages.id', $request->id)
-        ->get();
-
-        return view('detailpersonnage', ['personnages' => $personnages, 'commentairesPersonnage' => $commentairesPersonnage, 'okok' => $okok]);
+    
+        return view('detailpersonnage', ['personnages' => $personnages]);
     }
 
 

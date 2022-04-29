@@ -42,13 +42,13 @@
                     <br><br>
                     Commentaires :
                     <ul>
-                        @foreach($commentairesPersonnage as $commentaire)
-                        <li>{{ $commentaire->created_at }} : {{ $commentaire->content }} {{ $commentaire->name }}</li>
-                        @if($commentaire->user_id == Auth::id())
-                        [<a href="{{ route('formupdatecommentaire', $commentaire->id) }}">update</a>]
-                        [<a href="{{ route('deletecommentaire', $commentaire->id) }}">delete</a>]
-                        @endif
-                        @endforeach
+                        @foreach($personnages->commentaires as $commentaire)
+                            <li>{{ $commentaire->created_at }} {{ $commentaire->user->name }} : {{ $commentaire->content }}</li>
+                                @if($commentaire->user_id == Auth::id())
+                                    [<a href="{{ route('formupdatecommentaire', $commentaire->id) }}">update</a>]
+                                    [<a href="{{ route('deletecommentaire', $commentaire->id) }}">delete</a>]
+                                @endif
+                         @endforeach
                     </ul>
                     <br><br>
                     <form method="post" action="{{ route('postcommentairepersonnage', $personnages->id) }}">
