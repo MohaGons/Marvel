@@ -85,10 +85,8 @@ class PersonnageController extends Controller
 
         $films = [];
         foreach ($personnage_films as $personnage_film) {
-            $films[] = Film::find($personnage_film)[0]->name;
-            
+            $films[] = Film::find($personnage_film->films_id);            
         }
-       
         return view('detailpersonnage', ['personnages' => $personnages, 'films' => $films]);
     }
 

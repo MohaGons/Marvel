@@ -38,7 +38,7 @@
                             <th><strong> Participation au film: </strong></th>
                             <td>
                             @foreach($films as $film)
-                            <li> {{ $film }}</li>
+                            <li> {{ $film->name }}</li>
                             @endforeach
                             </td>
                         </tr>
