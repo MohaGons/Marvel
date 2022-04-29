@@ -51,7 +51,6 @@ class PersonnageController extends Controller
         $personnages->firstname = $request->firstname;
         $personnages->lastname = $request->lastname;
         $personnages->charactername = $request->charactername;
-        $name = $request->file('image')->getClientOriginalName();
         $path = $request->file('image')->store('public/image');
         $path = substr($path, 13);
         $personnages->photo = $path;
@@ -85,7 +84,7 @@ class PersonnageController extends Controller
 
         $films = [];
         foreach ($personnage_films as $personnage_film) {
-            $films[] = Film::find($personnage_film->films_id);            
+            $films[] = Film::find($personnage_film->films_id);
         }
         return view('detailpersonnage', ['personnages' => $personnages, 'films' => $films]);
     }
@@ -160,5 +159,12 @@ class PersonnageController extends Controller
         $commentairePersonnage->save();
 
         return redirect(route('detailpersonnage', $commentairePersonnage->personnage_id));
+    }
+
+    public function searchPersonnage(Request $request)
+    {
+        $personnagesSearch = DB::table('personnages')->where('firstname', 'like', '%'.$request->searchpersonnages.'%')
+            ->orWhere('lastname', 'like', '%'.$request->searchpersonnages.'%')->get();;
+        return view('personnage', ['personnages' => $personnagesSearch]);
     }
 }

@@ -20,7 +20,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/addpersonnage', 
+Route::get('/addpersonnage',
     [PersonnageController::class, 'addPersonnage']
 )->middleware(['auth'])->name('addpersonnages');
 
@@ -71,5 +71,10 @@ Route::post('/updateCommentaire',
 
 Route::get('login/github', [AuthenticatedSessionController::class, 'redirectToProvider']);
 Route::get('login/github/callback', [AuthenticatedSessionController::class, 'handleProviderCallback']);
+
+
+Route::post('/searchPersonnage}',
+    [PersonnageController::class, 'searchPersonnage']
+)->middleware(['auth'])->name('searchpersonnage');
 
 require __DIR__.'/auth.php';
